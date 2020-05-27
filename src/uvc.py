@@ -1,8 +1,12 @@
 # -*- encoding: utf-8 -*-
-import sys
 import os
 import subprocess
 from collections import defaultdict
+
+from utils import logging_helper
+
+logger = logging_helper.get_logger()
+
 
 # sort last update date
 # sync specific branch with auto stash changee
@@ -32,7 +36,7 @@ def fire_command_and_get_output(folder_list, command):
         os.chdir(d)
 
         print('=================================================')
-        # print(d)
+        logger.debug(d)
 
         result = subprocess.run(command, stdout=subprocess.PIPE)
         # print(result.stdout.decode('utf-8'))
@@ -57,7 +61,6 @@ def show_branch_report(proj_dir, output):
     d_list = branch_report[branch_name]
     d_list.append(proj_dir)
     branch_report[branch_name] = d_list
-
 
 
 if __name__ == '__main__':
