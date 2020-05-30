@@ -9,7 +9,7 @@ _path = os.path.join(_path, '..', 'logging.ini')
 DEFAULT_LOG_CONFIG = os.path.abspath(_path)
 
 
-def get_logger(file_name=DEFAULT_LOG_CONFIG, logger_name='root'):
+def get_logger(file_name=DEFAULT_LOG_CONFIG, logger_name=''):
     """
     Init logger. Default use INFO level. If 'DEBUG' is '1' in env use DEBUG level.
     :return:
