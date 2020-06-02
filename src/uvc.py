@@ -12,18 +12,23 @@ logger.info('app start!')
 arg_parser = argparse.ArgumentParser(description='parse argument')
 arg_parser.add_argument('-r', '--root', default=os.getcwd())
 arg_parser.add_argument('-c', '--command')
+arg_parser.add_argument('-g', '--git')
 args = arg_parser.parse_args()
 
 git_folders = get_all_git_folders(args.root)
 # for d in git_folders:
 #     print(d)
-command = args.command
+if args.command:
+    command = args.command
+elif args.git:
+    command = f'git {args.git}'
 
-width = 80
+console_border_width = 80
 
-print(f'Command: "{command}"')
 for wd, out in fire_commands(git_folders, command):
-    print(f" {'':_<{width}} ")
-    print(f'|{wd:^{width}}|')
-    print(f"|{'':_<{width}}|")
+    print(f" {'':_<{console_border_width}} ")
+    print(f'|{wd:^{console_border_width}}|')
+    out_msg = f'=> {command}'
+    print(f'|{out_msg:^{console_border_width}}|')
+    print(f"|{'':_<{console_border_width}}|")
     print(out)
