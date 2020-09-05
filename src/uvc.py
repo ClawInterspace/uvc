@@ -19,14 +19,17 @@ arg_parser.add_argument('-u', '--update')
 args = arg_parser.parse_args()
 
 config.git_folders = get_all_git_folders(args.root)
-# for d in git_folders:
-#     print(d)
+console_border_width = config.console_border_width
+
+# TODO: change to Click
+# TODO: remove -g, -u
+# TODO: setup the parameter priority: command line > config file > default
+
+
 if args.command:
     config.command = args.command
 elif args.git:
     config.command = f'git {args.git}'
-
-console_border_width = config.console_border_width
 
 update_branch('develop')
 

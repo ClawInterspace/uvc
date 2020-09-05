@@ -20,8 +20,7 @@ def update_branch(branch):
     identify_msg = f'uvc stash at {dt}'
     _ = list(fire_commands(need_stashed_dirs, f'git stash push --all -m "{identify_msg}"'))
     _ = list(fire_commands(has_target_branch_dirs, f'git checkout {branch}'))
-    _ = list(fire_commands(has_target_branch_dirs, f'git fetch --all --prune'))
-    _ = list(fire_commands(has_target_branch_dirs, f'git fetch --tags -f'))
+    _ = list(fire_commands(has_target_branch_dirs, f'git fetch --all --prune --tag -f'))
     _ = list(fire_commands(has_target_branch_dirs, f'git pull'))
 
     cmd_maps = {wd: f'git checkout {git_status_snapshot1.map.get(wd).current_branch}'
