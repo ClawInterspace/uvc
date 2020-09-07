@@ -14,22 +14,20 @@ logger.info('app start!')
 arg_parser = argparse.ArgumentParser(description='parse argument')
 arg_parser.add_argument('-r', '--root', default=os.getcwd())
 arg_parser.add_argument('-c', '--command')
-arg_parser.add_argument('-g', '--git')
-arg_parser.add_argument('-u', '--update')
 args = arg_parser.parse_args()
 
 config.git_folders = get_all_git_folders(args.root)
 console_border_width = config.console_border_width
 
 # TODO: change to Click
-# TODO: remove -g, -u
 # TODO: setup the parameter priority: command line > config file > default
+# TODO: refactor config loading location
+# TODO: build up unittest for get git folder
+# TODO: make a setup script
 
 
 if args.command:
     config.command = args.command
-elif args.git:
-    config.command = f'git {args.git}'
 
 update_branch('develop')
 
