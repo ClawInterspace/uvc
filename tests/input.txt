@@ -1,0 +1,1 @@
+uvc.py -c "git status" -r "D:\workspace\project-common-utils"
