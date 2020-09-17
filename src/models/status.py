@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 
-class GitDirStatus(object):
+class GitRepoStatus(object):
     class Status:
         def __init__(self, path):
             self.path = path
