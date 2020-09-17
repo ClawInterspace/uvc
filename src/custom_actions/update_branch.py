@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from git.cmd_firer import fire_commands, fire_commands_respectively
+from utils.command_helper import fire_commands, fire_commands_respectively
 from models import config
 from models.status import GitRepoStatus
 

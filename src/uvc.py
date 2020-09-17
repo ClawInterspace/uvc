@@ -3,7 +3,8 @@ import argparse
 import os
 
 from custom_actions.update_branch import update_branch
-from git.cmd_firer import get_all_git_folders, fire_commands
+from git.cmd_firer import get_all_git_folders
+from utils.command_helper import fire_commands
 from models import config
 from utils import logging_helper
 
