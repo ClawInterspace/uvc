@@ -1,8 +1,9 @@
 import os
 import subprocess
 
-from git.cmd_firer import logger
 from models import config
+from utils.logging import get_logger
+logger = get_logger()
 
 
 def fire_commands(dest_wds: list, command: object, show_output: bool = True) -> tuple:

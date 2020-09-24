@@ -1,14 +1,12 @@
 # -*- encoding: utf-8 -*-
 import os
-# from asyncio import subprocess
 import copy
 
-from utils.logging_helper import get_logger
-
+from utils.logging import get_logger
 logger = get_logger()
 
 
-def get_all_git_folders(proj_root):
+def get_repo_folders(proj_root):
     """
     """
     git_folders = []

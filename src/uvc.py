@@ -3,12 +3,12 @@ import argparse
 import os
 
 from custom_actions.update_branch import update_branch
-from git.cmd_firer import get_all_git_folders
-from utils.command_helper import fire_commands
+from git.utils import get_repo_folders
+from utils.command import fire_commands
 from models import config
-from utils import logging_helper
+from utils import logging
 
-logger = logging_helper.get_logger()
+logger = logging.get_logger()
 
 logger.info('app start!')
 
@@ -18,7 +18,7 @@ arg_parser.add_argument('-c', '--command')
 arg_parser.add_argument('-u', '--update')
 args = arg_parser.parse_args()
 
-config.git_folders = get_all_git_folders(args.root)
+config.git_folders = get_repo_folders(args.root)
 console_border_width = config.console_border_width
 
 if args.command:
