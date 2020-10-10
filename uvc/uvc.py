@@ -2,7 +2,7 @@
 import argparse
 import os
 
-from custom_actions.update_branch import update_branch
+from git.custom_actions.update_branch import update_branch
 from git.utils import get_repo_folders
 from utils.command import fire_commands
 from models import config
