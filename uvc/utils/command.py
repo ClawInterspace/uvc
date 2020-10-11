@@ -1,8 +1,8 @@
 import os
 import subprocess
 
-from models import config
-from utils.logging import get_logger
+from uvc.models import config
+from uvc.utils.logging import get_logger
 logger = get_logger()
 
 

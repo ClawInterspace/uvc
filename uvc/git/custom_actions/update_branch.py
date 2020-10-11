@@ -1,8 +1,8 @@
 from datetime import datetime
 
-from utils.command import fire_commands, fire_commands_respectively
-from models import config
-from models.status import GitRepoStatus
+from uvc.utils.command import fire_commands, fire_commands_respectively
+from uvc.models import config
+from uvc.models.status import GitRepoStatus
 
 
 def update_branch(branch):

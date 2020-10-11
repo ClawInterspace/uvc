@@ -2,11 +2,11 @@
 import argparse
 import os
 
-from git.custom_actions.update_branch import update_branch
-from git.utils import get_repo_folders
-from utils.command import fire_commands
-from models import config
-from utils import logging
+from uvc.git.custom_actions.update_branch import update_branch
+from uvc.git.utils import get_repo_folders
+from uvc.utils.command import fire_commands
+from uvc.models import config
+from uvc.utils import logging
 
 logger = logging.get_logger()
 

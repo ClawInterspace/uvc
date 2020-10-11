@@ -2,7 +2,7 @@
 import os
 import copy
 
-from utils.logging import get_logger
+from uvc.utils.logging import get_logger
 logger = get_logger()
 
 
