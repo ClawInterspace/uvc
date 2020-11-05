@@ -1,8 +1,8 @@
 from datetime import datetime
 
-from git.cmd_firer import fire_commands, fire_commands_respectively
-from models import config
-from models.dir_status import GitDirStatus
+from uvc.utils.command import fire_commands, fire_commands_respectively
+from uvc.models import config
+from uvc.models.status import GitRepoStatus
 
 
 def update_branch(branch):
@@ -28,8 +28,8 @@ def update_branch(branch):
     _ = list(fire_commands_respectively(cmd_maps))
 
 
-def build_folder_status() -> GitDirStatus:
-    dir_status = GitDirStatus(config.git_folders)
+def build_folder_status() -> GitRepoStatus:
+    dir_status = GitRepoStatus(config.git_folders)
 
     for wd, out in fire_commands(config.git_folders, 'git status'):
         wd_status = dir_status.map.get(wd)
