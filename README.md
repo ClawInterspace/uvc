@@ -1,6 +1,6 @@
 # uvc
 
-Use for muliplate multiple git repositories.
+A command line adapter for operating multiple git repositories.
 
 # Install
 ```
