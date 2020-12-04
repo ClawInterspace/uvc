@@ -13,7 +13,7 @@ py -m pip install git+https://github.com/ClawInterspace/uvc.git@master#egg=uvc
 * Issue a command to all repos:
 
 ```
-python -m uvc.main -r "D:\workspace\project-expr" git command "status -h"
+python -m uvc.main -r "D:\workspace\project-expr" git fire status -h
 ```
 
 * Update a branch to all repos:

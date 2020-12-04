@@ -11,13 +11,13 @@ def git():
     pass
 
 
-@git.command()
-@click.argument('gitcmd')
-def command(gitcmd):
+@git.command(context_settings=dict(ignore_unknown_options=True,))
+@click.argument('gitcmd', nargs=-1, type=click.UNPROCESSED)
+def fire(gitcmd):
     """Issue a command to all of repos.
     """
-    click.echo(f"issue_command")
-    _ = list(fire_commands(config.git_folders, f'git {gitcmd}'))
+    cmdline = ' '.join(gitcmd)
+    _ = list(fire_commands(config.git_folders, f'git {cmdline}'))
 
 
 @git.command()
