@@ -5,7 +5,7 @@ import click
 
 from uvc.models import config
 from uvc.utils import logging
-from .git import git, get_repo_folders
+from uvc.git import git, get_repo_folders
 
 logger = logging.get_logger()
 console_border_width = config.console_border_width
