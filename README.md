@@ -21,3 +21,9 @@ python -m uvc.main -r "D:\workspace\project-expr" fire git status -h
 ```
 python -m uvc.main -r "D:\workspace\project-expr" git update develop
 ```
+
+* Extract all diff jira issues
+
+```
+python -m uvc.main -r "D:\workspace\project-tis" git diff-msgs -t 1.2rc9 1.2rc12 -re "(?i)CTIS\-\d+"  -o jira 
+```
