@@ -3,6 +3,7 @@ import subprocess
 
 from uvc.models import config
 from uvc.utils.logging import get_logger
+
 logger = get_logger()
 
 
@@ -16,10 +17,14 @@ def fire_commands(dest_wds: list, command: object, show_output: bool = True) -> 
     """
     src_dir = os.getcwd()
     for working_dir in dest_wds:
-        target_dir, output = _issue_command_in_directory(command, src_dir, working_dir)
-        if show_output:
-            display(target_dir, command, output)
-        yield target_dir, output
+        try:
+            target_dir, output = _issue_command_in_directory(command, src_dir, working_dir)
+            if show_output:
+                display(target_dir, command, output)
+            yield target_dir, output
+        except Exception as e:
+            print(e)
+            continue
 
 
 def fire_commands_respectively(wd_and_cmd_maps: dict, show_output: bool = True) -> tuple:
@@ -45,7 +50,8 @@ def _issue_command_in_directory(issue_cmd, origin_dir, target_dir):
         output = result.stdout.decode('utf-8')
         return target_dir, output
     except Exception as e:
-        raise Exception(f': Fire "{issue_cmd}" failed')
+        print(Exception(f': Fire "{issue_cmd}" failed'))
+        raise
     finally:
         os.chdir(origin_dir)
 
