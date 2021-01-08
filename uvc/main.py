@@ -16,7 +16,6 @@ console_border_width = config.console_border_width
 @click.option('-r', '--root', default=os.getcwd(), help='Setup version control root folder for parsing.')
 @click.option('--no-trace-command', is_flag=True, help=r"Set if you don't need stdout output.")
 def cli(root, no_trace_command):
-    click.echo(f'root: {root}')
     config.git_folders = get_repo_folders(root)
     config.trace_command = not no_trace_command
 
