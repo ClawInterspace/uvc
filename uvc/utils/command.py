@@ -54,7 +54,7 @@ def _issue_command_in_directory(issue_cmd, origin_dir, target_dir) -> tuple:
     trace_cmd = config.trace_command
     try:
         os.chdir(target_dir)
-        result = subprocess.run(issue_cmd, stdout=subprocess.PIPE, shell=config.is_shell)
+        result = subprocess.run(issue_cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=config.is_shell)
         output = result.stdout.decode('utf-8')
         return target_dir, output
     except Exception as e:
