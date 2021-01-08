@@ -27,3 +27,9 @@ python -m uvc.main -r "D:\workspace\project-expr" git update develop
 ```
 python -m uvc.main -r "D:\workspace\project-tis" git diff-msgs -t 1.2rc9 1.2rc12 -re "(?i)CTIS\-\d+"  -o jira 
 ```
+
+* Extract all diff jira issues without output
+
+```
+python -m uvc.main -r "D:\workspace\project-tis" --no-trace-command git diff-msgs -t 1.2rc9 1.2rc12 -re "(?i)CTIS\-\d+"  -o jira 
+```

@@ -3,10 +3,10 @@ import os
 
 import click
 
-from uvc.utils.command import fire_commands
+from uvc.git import git, get_repo_folders
 from uvc.models import config
 from uvc.utils import logging
-from uvc.git import git, get_repo_folders
+from uvc.utils.command import fire_commands
 
 logger = logging.get_logger()
 console_border_width = config.console_border_width
@@ -14,9 +14,10 @@ console_border_width = config.console_border_width
 
 @click.group()
 @click.option('-r', '--root', default=os.getcwd(), help='Setup version control root folder for parsing.')
-def cli(root):
-    click.echo(f'root: {root}')
+@click.option('--no-trace-command', is_flag=True, help=r"Set if you don't need stdout output.")
+def cli(root, no_trace_command):
     config.git_folders = get_repo_folders(root)
+    config.trace_command = not no_trace_command
 
 
 @git.command(context_settings=dict(ignore_unknown_options=True,))
