@@ -1,8 +1,8 @@
 from datetime import datetime
 
-from uvc.utils.command import fire_commands, fire_commands_respectively
 from uvc.models import config
 from uvc.models.status import GitRepoStatus
+from uvc.utils.command import fire_commands, fire_commands_respectively
 
 
 def update_branch(branch):
@@ -18,7 +18,7 @@ def update_branch(branch):
 
     dt = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     identify_msg = f'uvc stash at {dt}'
-    _ = list(fire_commands(need_stashed_dirs, f'git stash push --all -m "{identify_msg}"'))
+    _ = list(fire_commands(need_stashed_dirs, f'git stash push --include-untracked -m "{identify_msg}"'))
     _ = list(fire_commands(has_target_branch_dirs, f'git checkout {branch}'))
     _ = list(fire_commands(has_target_branch_dirs, f'git fetch --all --prune --tag -f'))
     _ = list(fire_commands(has_target_branch_dirs, f'git pull'))

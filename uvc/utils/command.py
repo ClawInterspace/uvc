@@ -67,9 +67,12 @@ def _issue_command_in_directory(issue_cmd, origin_dir, target_dir) -> tuple:
         os.chdir(origin_dir)
 
 
-def display(wd, cmd, output):
+def display(wd, cmd, cmd_output):
 
     width = 10
-    click.echo(click.style(f'{"path:": <{width}}{wd}', fg='green'))
-    click.echo(click.style(f'{"command:": <{width}}{cmd}', fg='yellow'))
-    click.echo(output)
+    info_working_path = f'{"path:": <{width}}{wd}'
+    info_cmd = f'{"command:": <{width}}{cmd}'
+
+    click.echo(click.style(info_working_path, fg='green'))
+    click.echo(click.style(info_cmd, fg='yellow'))
+    click.echo(cmd_output)
