@@ -1,6 +1,8 @@
 import os
 import subprocess
 
+import click
+
 from uvc.models import config
 from uvc.utils.logging import get_logger
 
@@ -65,11 +67,12 @@ def _issue_command_in_directory(issue_cmd, origin_dir, target_dir) -> tuple:
         os.chdir(origin_dir)
 
 
-def display(wd, cmd, output):
-    console_border_width = config.console_border_width
-    print(f" {'':_<{console_border_width}} ")
-    print(f'|{wd:<{console_border_width}}|')
-    out_msg = f'=> {cmd}'
-    print(f'|{out_msg:<{console_border_width}}|')
-    print(f"|{'':_<{console_border_width}}|")
-    print(output)
+def display(wd, cmd, cmd_output):
+
+    width = 10
+    info_working_path = f'{"path:": <{width}}{wd}'
+    info_cmd = f'{"command:": <{width}}{cmd}'
+
+    click.echo(click.style(info_working_path, fg='green'))
+    click.echo(click.style(info_cmd, fg='yellow'))
+    click.echo(cmd_output)

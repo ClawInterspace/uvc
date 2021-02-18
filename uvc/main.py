@@ -9,7 +9,6 @@ from uvc.utils import logging
 from uvc.utils.command import fire_commands
 
 logger = logging.get_logger()
-console_border_width = config.console_border_width
 
 
 @click.group()
