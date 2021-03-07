@@ -8,6 +8,8 @@ from uvc.git.utils import get_repo_folders
 
 @click.group()
 def git():
+    """Issue a customized command to all repos.
+    """
     pass
 
 
