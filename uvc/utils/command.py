@@ -9,7 +9,7 @@ from uvc.utils.logging import get_logger
 logger = get_logger()
 
 
-def fire_commands(dest_wds: list, command: object) -> tuple:
+def fire_commands(dest_wds: list, command: str) -> tuple:
     """
 
     :param dest_wds: destination working dictionary
@@ -30,15 +30,15 @@ def fire_commands(dest_wds: list, command: object) -> tuple:
             continue
 
 
-def fire_commands_respectively(wd_and_cmd_maps: dict) -> tuple:
+def fire_commands_dict(wd_and_cmd_dict: dict) -> tuple:
     """
 
-    :param wd_and_cmd_maps: a dictionary for command and target dir maps
+    :param wd_and_cmd_dict: a dictionary for command and target dir maps
     :return:
     """
     trace_cmd = config.trace_command
     src_dir = os.getcwd()
-    for working_dir, issue_cmd in wd_and_cmd_maps.items():
+    for working_dir, issue_cmd in wd_and_cmd_dict.items():
         target_dir, output = _issue_command_in_directory(issue_cmd, src_dir, working_dir)
         if trace_cmd:
             display(target_dir, issue_cmd, output)

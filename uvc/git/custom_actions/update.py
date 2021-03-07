@@ -2,7 +2,7 @@ from datetime import datetime
 
 from uvc.models import config
 from uvc.models.status import GitRepoStatus
-from uvc.utils.command import fire_commands, fire_commands_respectively
+from uvc.utils.command import fire_commands, fire_commands_dict
 
 
 def update_branch(branch):
@@ -25,7 +25,7 @@ def update_branch(branch):
 
     cmd_maps = {wd: f'git checkout {git_status_snapshot1.map.get(wd).current_branch}'
                 for wd in has_target_branch_dirs}
-    _ = list(fire_commands_respectively(cmd_maps))
+    _ = list(fire_commands_dict(cmd_maps))
 
 
 def build_folder_status() -> GitRepoStatus:
