@@ -2,7 +2,7 @@ import click
 
 from uvc.git.custom_actions.messages import (get_diff_messages_by_commits,
                                              extract_messages, extract_jira_issue_key)
-from uvc.git.custom_actions.update_branch import update_branch
+from uvc.git.custom_actions.update import update_branch
 from uvc.git.utils import get_repo_folders
 
 
